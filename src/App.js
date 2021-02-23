@@ -1,29 +1,57 @@
 import './App.css';
+import {useEffect} from "react";
 import Button from "./components/Button"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Content from "./components/Content"
+import Social from "./components/Social"
+import { connect } from "react-redux"
+import { actionChange, receivingData, errData, successData} from "./redux/action"
+import axios from "axios"
 
 
+function SmallApp({content, error, change, receivingData, errData, successData}) {
+  useEffect(()=> {
+    const url = "https://quote-random-machine-backend.herokuapp.com/content/quote";
+    receivingData();
+    axios.get(url)
+    .then((res) => {
+      console.log('this is axios', res.data);
+      return successData(res.data)
 
+    })
+    .catch((err) => {      
+      return errData()
 
-function App() {
+    });
+     
+
+  }, [])
+
   return (
     <div className="App" id='quote-box'>
-      <div id='text'>
-      <h1 id="new-quote">Definiteness of purpose is the starting point of all achievement.</h1>
-      <p id="author">- W. Clement Stone</p>
-      <a href="twitter.com/intent/tweet" id="tweet-quote"><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
-      <a href="https://facebook.com/"><FontAwesomeIcon icon={['fab', 'facebook']} /></a>  
-      
-
-      
-      
+      <Content content={content} error={error}/>
+    <div>
+        <Social />
+        <Button change={change}/>
       </div>
-         
       
-
-      <Button />    
     </div>
   );
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    change: () => dispatch(actionChange()),
+    receivingData: () => dispatch(receivingData()),
+    errData: () => dispatch(errData()),
+    successData: (data) => dispatch(successData(data))   
+    
+    }
+  }
 
+const  mapStateToProps = (state) => {
+  return {
+    content: state.content,
+    error: state.error
+  }
+}
+const App = connect(mapStateToProps, mapDispatchToProps)(SmallApp)
 export default App;
