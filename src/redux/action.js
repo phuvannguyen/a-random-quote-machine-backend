@@ -1,4 +1,3 @@
-import axios from "axios";
 
 export const CHANGE = "CHANGE";
 export const RECEIVING = "RECEIVING";
@@ -32,15 +31,3 @@ export const successData = (data) => {
     }
 }
 
-const handleAsync = () => {
-    return async (dispatch) => {
-        const url = "https://quote-random-machine.herokuapp.com/content/quote";
-        dispatch(receivingData);
-        const {data} = await axios.get(url);
-        if (!data) {
-            return dispatch(errData)
-        } else {
-            return dispatch(successData(content.data))
-        }
-    }
-}
