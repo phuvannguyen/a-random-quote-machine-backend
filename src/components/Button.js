@@ -2,6 +2,6 @@
 
 function Button({change}) {    
     
-    return <button onClick={change}>New quote</button>
+    return <button onClick={change} id="new-quote">New quote</button>
 }
 export default Button;
