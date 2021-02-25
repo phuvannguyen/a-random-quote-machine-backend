@@ -2,13 +2,13 @@ function Content({content, error}) {
     return (
         <div>
             {error === null ? 
-            <div>
+            <div id="text">
                 <h2>Life isn’t about getting and having, it’s about giving and being</h2>
-                <p>Kevin Kruse</p>
+                <p  id="author">Kevin Kruse</p>
             </div> : 
-            <div>
+            <div id="text">
                 <h2>{content[0].quote}</h2>
-                <p>{content[0].author}</p>
+                <p  id="author">{content[0].author}</p>
             </div>
             }         
         </div>
