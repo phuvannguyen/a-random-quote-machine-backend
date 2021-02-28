@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Social.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faTwitterSquare, faTumblrSquare} from '@fortawesome/free-brands-svg-icons'
 

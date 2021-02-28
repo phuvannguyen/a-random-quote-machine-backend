@@ -1,0 +1,22 @@
+.content {
+    margin: 1rem;
+}
+
+.quote {
+    display: flex;
+    justify-content: center;
+
+}
+
+#author {
+    text-align: right;
+    padding-right: 2rem;
+}
+
+
+
+
+.faQuoteLeft {
+    margin-top: 26px;
+    margin-right: 0.5rem;
+}
