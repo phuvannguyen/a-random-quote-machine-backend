@@ -8,7 +8,7 @@ import { actionChange, receivingData, errData, successData} from "./redux/action
 import axios from "axios"
 
 
-function SmallApp({content, error, change, receivingData, errData, successData}) {
+function SmallApp({content, error, change, receivingData, errData, successData, color}) {
   useEffect(()=> {
     const url = "https://quote-random-machine-backend.herokuapp.com/content/quote";
     receivingData();
@@ -25,27 +25,14 @@ function SmallApp({content, error, change, receivingData, errData, successData})
      
 
   }, []);
-  const colors = [
-    '#16a085',
-    '#27ae60',
-    '#2c3e50',
-    '#f39c12',
-    '#e74c3c',
-    '#9b59b6',
-    '#FB6964',
-    '#342224',
-    '#472E32',
-    '#BDBB99',
-    '#77B1A9',
-    '#73A857'
-  ];
+  
 
   return (    
     <div className="App" id='quote-box'>
-      <Content content={content} error={error}/>
+      <Content content={content} error={error} color={color}/>
       <div className="social-change">
-          <Social />
-          <Button change={change} />
+          <Social color={color}/>
+          <Button change={change} color={color} />
       </div>
       
     </div>
@@ -64,7 +51,8 @@ const mapDispatchToProps = (dispatch) => {
 const  mapStateToProps = (state) => {
   return {
     content: state.content,
-    error: state.error
+    error: state.error,
+    color: state.colors 
   }
 }
 const App = connect(mapStateToProps, mapDispatchToProps)(SmallApp)
