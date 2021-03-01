@@ -1,11 +1,18 @@
 #tweet-quote {
     font-size: 20px;
     margin-right: 1rem;
+    text-decoration: none;
+    outline: none;
 }
 #tumbr-quote {
     font-size: 20px;
+    outline: none;
+    text-decoration: none;
+    outline: none;
 
 }
-a {
+/* a {
     text-decoration: none;
-}
+    outline: none;
+    color: none;
+} */

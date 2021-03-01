@@ -9,7 +9,7 @@ import axios from "axios"
 
 
 function SmallApp({content, error, change, receivingData, errData, successData, color}) {
-  useEffect(()=> {
+  useEffect(()=> {    
     const url = "https://quote-random-machine-backend.herokuapp.com/content/quote";
     receivingData();
     axios.get(url)

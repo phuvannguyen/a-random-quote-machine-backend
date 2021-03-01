@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import store from "./redux/store.js"
 
 const render = () => {
-  fancyLog();
+  fancyLog();  
   return ReactDOM.render(
   <Provider store={store}>
       <App />
